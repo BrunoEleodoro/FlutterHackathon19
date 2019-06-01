@@ -33,7 +33,7 @@ class HubProfilePageState extends State<HubProfilePage> {
         )),
         Container(
           height: 400,
-            child: UsersComponent())
+            child: UsersComponent(hub))
       ],)
     );
   }
@@ -42,8 +42,15 @@ class HubProfilePageState extends State<HubProfilePage> {
 
 
 class UsersComponent extends StatelessWidget {
+  Hub hub;
+
+
+  UsersComponent(this.hub);
+
   @override
   Widget build(BuildContext context) {
+
+
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -57,8 +64,12 @@ class UsersComponent extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            Icon(Icons.directions_car),
-            Icon(Icons.directions_transit),
+          ListView.builder(itemCount: hub.events.length,itemBuilder: (context, index) {
+            return ListTile(title: Text(hub.events[index]));
+          }),
+          ListView.builder(itemCount: hub.users.length,itemBuilder: (context, index) {
+            return ListTile(title: Text(hub.users[index].name));
+          })
           ],
         ),
       ),

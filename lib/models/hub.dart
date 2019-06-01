@@ -41,4 +41,9 @@ class Hub {
     this.photoUrl = url;
     return this;
   }
+
+  Hub withEvents(List<String> events) {
+    this.events = events;
+    return this;
+  }
 }
