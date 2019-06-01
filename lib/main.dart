@@ -35,7 +35,6 @@ class MapSampleState extends State<MapSample> {
 
   @override
   void initState() {
-
     super.initState();
   }
 
@@ -48,26 +47,44 @@ class MapSampleState extends State<MapSample> {
         markerId: markerId,
         icon: bitmapDescriptor,
         position: LatLng(-22.816987, -47.045458),
-        infoWindow: InfoWindow(
-            title: "Campinas Hub"
-        ));
+        infoWindow: InfoWindow(title: "Campinas Hub"));
     markers[markerIdCampinas] = new Marker(
         markerId: markerId,
         icon: bitmapDescriptor,
         position: LatLng(-22.814802, -47.044685),
-        infoWindow: InfoWindow(
-            title: "Campinas Hub"
-        ));
-
+        infoWindow: InfoWindow(title: "Campinas Hub"));
 
     return new Scaffold(
-      body: GoogleMap(
-        mapType: MapType.hybrid,
-        initialCameraPosition: _kGooglePlex,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-        markers: Set<Marker>.of(markers.values),
+      body: Stack(
+        children: <Widget>[
+          GoogleMap(
+            mapType: MapType.normal,
+            initialCameraPosition: _kGooglePlex,
+            onMapCreated: (GoogleMapController controller) {
+              _controller.complete(controller);
+            },
+            myLocationButtonEnabled: false,
+            markers: Set<Marker>.of(markers.values),
+          ),
+          Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                margin: EdgeInsets.all(16),
+                width: double.maxFinite,
+//                height: 100,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(50))
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: TextField(
+                      decoration: InputDecoration(),
+                    ),
+                  ),
+                ),
+              ))
+        ],
       ),
 //      floatingActionButton: FloatingActionButton.extended(
 //        onPressed: _goToTheLake,
