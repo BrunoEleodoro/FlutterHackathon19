@@ -10,15 +10,17 @@ var userMock = [
 
 var hubsMock = [
   Hub().withId(1)
-  .withPhotoUrl("https://media.licdn.com/dms/image/C4D22AQG-e-wLPG8dnQ/feedshare-shrink_8192/0?e=1561593600&v=beta&t=0U1OnROHLYqeubGFRP1d6DrTl1Ae93L_fl3LkGrOjqE")
+      .withPhotoUrl("https://media.licdn.com/dms/image/C4D22AQG-e-wLPG8dnQ/feedshare-shrink_8192/0?e=1561593600&v=beta&t=0U1OnROHLYqeubGFRP1d6DrTl1Ae93L_fl3LkGrOjqE")
       .withName("Hub Campinas")
-  .withDescription("Campinas hub flutter!")
+      .withDescription("Campinas hub flutter!")
       .withUsers(userMock)
-      .withGeoLocation(GeoLocation(-22.816987, -47.045458)),
+      .withGeoLocation(GeoLocation(-22.816987, -47.045458))
+      .withEvents(["Event01", "Event02"]),
   Hub().withId(2)
       .withPhotoUrl("https://media.licdn.com/dms/image/C4D22AQG-e-wLPG8dnQ/feedshare-shrink_8192/0?e=1561593600&v=beta&t=0U1OnROHLYqeubGFRP1d6DrTl1Ae93L_fl3LkGrOjqE")
       .withName("Hub Sampa")
       .withDescription("Sampa hub flutter!")
       .withUsers(userMock)
-      .withGeoLocation(GeoLocation(-22.816987, -47.045458)),
+      .withGeoLocation(GeoLocation(-22.8169863,-47.0449416))
+      .withEvents(["Event01", "Event02"]),
 ];
