@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Google Maps Demo',
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
@@ -72,6 +73,16 @@ class MapSampleState extends State<MapSample> {
             markers: Set<Marker>.of(markers.values),
           ),
           Align(
+            alignment: Alignment.topRight,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 25, right: 16),
+              child: FloatingActionButton(onPressed: ()
+              {
+                Navigator.of(context).pushNamed('/profile');
+              }, child: Icon(Icons.person),),
+            ),
+          ),
+          Align(
               alignment: Alignment.bottomCenter,
               child: Container(
                 margin: EdgeInsets.all(16),
@@ -84,20 +95,23 @@ class MapSampleState extends State<MapSample> {
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: TextField(
-                      decoration: InputDecoration(),
+
+                      decoration: InputDecoration(
+                        hintText: 'Nome do hub'
+                      ),
                     ),
                   ),
                 ),
               ))
         ],
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.of(context).pushNamed('/profile');
-        },
-        label: Text('To the lake!'),
-        icon: Icon(Icons.directions_boat),
-      ),
+//      floatingActionButton: FloatingActionButton.extended(
+//        onPressed: () {
+//          Navigator.of(context).pushNamed('/profile');
+//        },
+//        label: Text('To the lake!'),
+//        icon: Icon(Icons.directions_boat),
+//      ),
     );
   }
 
