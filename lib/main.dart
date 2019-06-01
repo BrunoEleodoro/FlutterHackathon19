@@ -21,10 +21,10 @@ class MapSample extends StatefulWidget {
 
 class MapSampleState extends State<MapSample> {
   Completer<GoogleMapController> _controller = Completer();
-
+  Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
+    target: LatLng(-22.816987, -47.045458),
+    zoom: 15.4746,
   );
 
   static final CameraPosition _kLake = CameraPosition(
@@ -34,7 +34,32 @@ class MapSampleState extends State<MapSample> {
       zoom: 19.151926040649414);
 
   @override
+  void initState() {
+
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    BitmapDescriptor bitmapDescriptor = BitmapDescriptor.defaultMarker;
+    var markerIdCampinas = MarkerId("campinas");
+    var markerId = MarkerId("campinas");
+    markers[markerId] = new Marker(
+        markerId: markerId,
+        icon: bitmapDescriptor,
+        position: LatLng(-22.816987, -47.045458),
+        infoWindow: InfoWindow(
+            title: "Campinas Hub"
+        ));
+    markers[markerIdCampinas] = new Marker(
+        markerId: markerId,
+        icon: bitmapDescriptor,
+        position: LatLng(-22.814802, -47.044685),
+        infoWindow: InfoWindow(
+            title: "Campinas Hub"
+        ));
+
+
     return new Scaffold(
       body: GoogleMap(
         mapType: MapType.hybrid,
@@ -42,12 +67,13 @@ class MapSampleState extends State<MapSample> {
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
+        markers: Set<Marker>.of(markers.values),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        label: Text('To the lake!'),
-        icon: Icon(Icons.directions_boat),
-      ),
+//      floatingActionButton: FloatingActionButton.extended(
+//        onPressed: _goToTheLake,
+//        label: Text('To the lake!'),
+//        icon: Icon(Icons.directions_boat),
+//      ),
     );
   }
 
