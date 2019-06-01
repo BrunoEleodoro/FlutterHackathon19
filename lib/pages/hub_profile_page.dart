@@ -5,18 +5,18 @@ import 'package:flutter_hackathon/repositories/hub_repository.dart';
 @immutable
 class HubProfilePage extends StatefulWidget {
   int hubId;
-
+  HubProfilePage({this.hubId});
   @override
-  State<HubProfilePage> createState() => HubProfilePageState();
+  State<HubProfilePage> createState() => HubProfilePageState(hubId);
 }
 
 class HubProfilePageState extends State<HubProfilePage> {
   HubRepository _hubRepository = HubRepository();
   Hub hub;
 
-  HubProfilePageState() {
-    int hubId = 1; // this.widget.hubId;
-    this.hub = this._hubRepository.getById(hubId);
+  HubProfilePageState(int hubid) {
+    // this.widget.hubId;
+    this.hub = this._hubRepository.getById(hubid);
   }
 
 

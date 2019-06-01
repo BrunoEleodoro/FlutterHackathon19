@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'pages/profile_page.dart';
+import 'pages/hub_profile_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,12 +10,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(brightness: Brightness.dark),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Google Maps Demo',
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         '/': (context) => MapSample(),
         '/profile': (context) => ProfilePage(),
+        '/profile_page': (context) => HubProfilePage(),
       },
     );
   }
@@ -46,13 +49,87 @@ class MapSampleState extends State<MapSample> {
 
   void loadData() async {
     BitmapDescriptor bitmapDescriptor = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(size: Size(32, 32)), "assets/marker_icon.png");
+        ImageConfiguration(size: Size(32, 32)), "assets/flutter.png");
     var markerId = MarkerId("campinas");
+    var markerId2 = MarkerId("campinas2");
+    var markerId3 = MarkerId("campinas3");
+    var markerId4 = MarkerId("campinas4");
+    var markerId5 = MarkerId("campinas5");
     markers[markerId] = new Marker(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => HubProfilePage(
+                      hubId: 1,
+                    )),
+          );
+        },
         markerId: markerId,
         icon: bitmapDescriptor,
         position: LatLng(-22.816987, -47.045458),
         infoWindow: InfoWindow(title: "Campinas Hub"));
+
+    markers[markerId2] = new Marker(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => HubProfilePage(
+                      hubId: 1,
+                    )),
+          );
+        },
+        markerId: markerId2,
+        icon: bitmapDescriptor,
+        position: LatLng(-22.815242, -47.047678),
+        infoWindow: InfoWindow(title: "Campinas Hub 2"));
+
+    markers[markerId3] = new Marker(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => HubProfilePage(
+                      hubId: 2,
+                    )),
+          );
+        },
+        markerId: markerId3,
+        icon: bitmapDescriptor,
+        position: LatLng(-22.814480, -47.043430),
+        infoWindow: InfoWindow(title: "Campinas Hub 3"));
+
+    markers[markerId4] = new Marker(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => HubProfilePage(
+                      hubId: 2,
+                    )),
+          );
+        },
+        markerId: markerId4,
+        icon: bitmapDescriptor,
+        position: LatLng(-22.813175, -47.046294),
+        infoWindow: InfoWindow(title: "Campinas Hub 4"));
+
+    markers[markerId5] = new Marker(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => HubProfilePage(
+                      hubId: 2,
+                    )),
+          );
+        },
+        markerId: markerId5,
+        icon: bitmapDescriptor,
+        position: LatLng(-22.813511, -47.049256),
+        infoWindow: InfoWindow(title: "Campinas Hub 5"));
+
     setState(() {});
   }
 
