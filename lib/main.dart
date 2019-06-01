@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'pages/profile_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,7 +10,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Google Maps Demo',
-      home: MapSample(),
+      initialRoute: '/',
+      routes: <String, WidgetBuilder>{
+        '/': (context) => MapSample(),
+        '/profile': (context) => ProfilePage(),
+      },
     );
   }
 }
@@ -69,11 +74,13 @@ class MapSampleState extends State<MapSample> {
         },
         markers: Set<Marker>.of(markers.values),
       ),
-//      floatingActionButton: FloatingActionButton.extended(
-//        onPressed: _goToTheLake,
-//        label: Text('To the lake!'),
-//        icon: Icon(Icons.directions_boat),
-//      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.of(context).pushNamed('/profile');
+        },
+        label: Text('To the lake!'),
+        icon: Icon(Icons.directions_boat),
+      ),
     );
   }
 
