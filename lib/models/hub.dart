@@ -7,9 +7,14 @@ class Hub {
   List<User> users = [];
   List<String> events = [];
   GeoLocation geoLocation;
-  String iconUrl;
+  String photoUrl;
 
   Hub();
+
+  Hub withId(int id) {
+    this.id = id;
+    return this;
+  }
 
   Hub withUsers(List<User> users) {
     this.users = users;
@@ -23,6 +28,11 @@ class Hub {
 
   Hub withGeoLocation(GeoLocation geoLocation) {
     this.geoLocation = geoLocation;
+    return this;
+  }
+
+  Hub withPhotoUrl(String url) {
+    this.photoUrl = url;
     return this;
   }
 }
