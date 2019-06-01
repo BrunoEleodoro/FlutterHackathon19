@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(brightness: Brightness.dark),
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Google Maps Demo',
+      title: 'Starling',
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         '/': (context) => MapSample(),
