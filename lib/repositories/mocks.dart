@@ -21,6 +21,6 @@ var hubsMock = [
       .withName("Hub Sampa")
       .withDescription("Sampa hub flutter!")
       .withUsers(userMock)
-      .withGeoLocation(GeoLocation(-22.816987, -47.045458))
+      .withGeoLocation(GeoLocation(-22.8169863,-47.0449416))
       .withEvents(["Event01", "Event02"]),
 ];
