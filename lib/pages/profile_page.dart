@@ -68,16 +68,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   onPressed: () {},
                 ),
               ),
-              
-
             ],
           ),
         ), 
-      ),
-      floatingActionButton: FloatingActionButton(
-        //onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
