@@ -65,7 +65,6 @@ class MapSampleState extends State<MapSample> {
             );
           },
           markerId: markerId,
-          icon: bitmapDescriptor,
           position: LatLng(hub.geoLocation.lat, hub.geoLocation.long),
           infoWindow: InfoWindow(title: hub.name));
     });
