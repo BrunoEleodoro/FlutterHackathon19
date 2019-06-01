@@ -4,6 +4,7 @@ import 'package:flutter_hackathon/models/geo_location.dart';
 class Hub {
   int id;
   String name;
+  String description;
   List<User> users = [];
   List<String> events = [];
   GeoLocation geoLocation;
@@ -23,6 +24,11 @@ class Hub {
 
   Hub withName(String name) {
     this.name = name;
+    return this;
+  }
+
+  Hub withDescription(String description) {
+    this.description = description;
     return this;
   }
 

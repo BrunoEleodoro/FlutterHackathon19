@@ -26,6 +26,12 @@ class HubProfilePageState extends State<HubProfilePage> {
       body: ListView(children: <Widget>[
         Image.network(hub.photoUrl),
         Text(hub.name),
+        Card(child: Column(
+          children: <Widget>[
+            ListTile(title: Text("Name"), subtitle: Text(hub.name),),
+            ListTile(title: Text("Description"), subtitle: Text(hub.description),)
+          ],
+        )),
         Text("Teste"),
 
       ],)
