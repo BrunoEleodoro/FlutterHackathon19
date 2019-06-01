@@ -44,67 +44,70 @@ class MapSampleState extends State<MapSample> {
     super.initState();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    BitmapDescriptor bitmapDescriptor = BitmapDescriptor.defaultMarker;
-    var markerIdCampinas = MarkerId("campinas");
+  void loadData() async {
+    BitmapDescriptor bitmapDescriptor = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(size: Size(32, 32)), "assets/marker_icon.png");
     var markerId = MarkerId("campinas");
     markers[markerId] = new Marker(
         markerId: markerId,
         icon: bitmapDescriptor,
         position: LatLng(-22.816987, -47.045458),
         infoWindow: InfoWindow(title: "Campinas Hub"));
-    markers[markerIdCampinas] = new Marker(
-        markerId: markerId,
-        icon: bitmapDescriptor,
-        position: LatLng(-22.814802, -47.044685),
-        infoWindow: InfoWindow(title: "Campinas Hub"));
+    setState(() {});
+  }
 
+  @override
+  Widget build(BuildContext context) {
+    loadData();
     return new Scaffold(
-      body: Stack(
-        children: <Widget>[
-          GoogleMap(
-            mapType: MapType.normal,
-            initialCameraPosition: _kGooglePlex,
-            onMapCreated: (GoogleMapController controller) {
-              _controller.complete(controller);
-            },
-            myLocationButtonEnabled: false,
-            markers: Set<Marker>.of(markers.values),
-          ),
-          Align(
-            alignment: Alignment.topRight,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 25, right: 16),
-              child: FloatingActionButton(onPressed: ()
-              {
-                Navigator.of(context).pushNamed('/profile');
-              }, child: Icon(Icons.person),),
-            ),
-          ),
-          Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                margin: EdgeInsets.all(16),
-                width: double.maxFinite,
-//                height: 100,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(50))
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: TextField(
-
-                      decoration: InputDecoration(
-                        hintText: 'Nome do hub'
+      body: (markers.length > 0)
+          ? Stack(
+              children: <Widget>[
+                GoogleMap(
+                  mapType: MapType.normal,
+                  initialCameraPosition: _kGooglePlex,
+                  onMapCreated: (GoogleMapController controller) {
+                    _controller.complete(controller);
+                  },
+                  myLocationButtonEnabled: false,
+                  markers: Set<Marker>.of(markers.values),
+                ),
+                SafeArea(
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 15, right: 16),
+                      child: FloatingActionButton(
+                        onPressed: () {
+                          Navigator.of(context).pushNamed('/profile');
+                        },
+                        child: Icon(Icons.person),
                       ),
                     ),
                   ),
                 ),
-              ))
-        ],
-      ),
+                Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      margin: EdgeInsets.only(top: 32, left: 16, right: 80),
+                      height: 60,
+                      width: double.maxFinite,
+                      child: Card(
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(5))),
+                        child: Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: TextField(
+                            style: TextStyle(fontSize: 14),
+                            decoration: InputDecoration(hintText: 'Hub name'),
+                          ),
+                        ),
+                      ),
+                    ))
+              ],
+            )
+          : Center(child: CircularProgressIndicator()),
 //      floatingActionButton: FloatingActionButton.extended(
 //        onPressed: () {
 //          Navigator.of(context).pushNamed('/profile');
