@@ -57,20 +57,27 @@ class _ProfilePageState extends State<ProfilePage> {
                 keyboardType: TextInputType.number,
               ),
 
-              Container(height: 20.0),
+              // Container(height: 20.0),
 
-              Container(
-                width: double.maxFinite,
-                height: 60,
-                child: RaisedButton.icon(
-                  icon: Icon(Icons.save),
-                  label: Text('Salvar'),
-                  onPressed: () {},
-                ),
-              ),
+              // Container(
+              //   width: double.maxFinite,
+              //   height: 60,
+              //   child: RaisedButton.icon(
+              //     icon: Icon(Icons.save),
+              //     label: Text('Salvar'),
+              //     onPressed: () {},
+              //   ),
+              // ),
+              
+
             ],
           ),
         ), 
+      ),
+      floatingActionButton: FloatingActionButton(
+        tooltip: 'Increment',
+        child: Icon(Icons.save),
+        onPressed: () {},
       ),
     );
   }
