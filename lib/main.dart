@@ -51,11 +51,6 @@ class MapSampleState extends State<MapSample> {
   void loadData() async {
     BitmapDescriptor bitmapDescriptor = await BitmapDescriptor.fromAssetImage(
         ImageConfiguration(size: Size(32, 32)), "assets/flutter.png");
-    var markerId = MarkerId("campinas");
-    var markerId2 = MarkerId("campinas2");
-    var markerId3 = MarkerId("campinas3");
-    var markerId4 = MarkerId("campinas4");
-    var markerId5 = MarkerId("campinas5");
 
     hubsMock.forEach((hub) {
       var markerId = MarkerId(hub.name+hub.id.toString());

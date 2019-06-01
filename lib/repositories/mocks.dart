@@ -23,4 +23,18 @@ var hubsMock = [
       .withUsers(userMock)
       .withGeoLocation(GeoLocation(-22.8169863,-47.0449416))
       .withEvents(["Event01", "Event02"]),
+  Hub().withId(3)
+      .withPhotoUrl("https://media.licdn.com/dms/image/C4D22AQG-e-wLPG8dnQ/feedshare-shrink_8192/0?e=1561593600&v=beta&t=0U1OnROHLYqeubGFRP1d6DrTl1Ae93L_fl3LkGrOjqE")
+      .withName("Hub Rio")
+      .withDescription("Sampa hub flutter!")
+      .withUsers(userMock)
+      .withGeoLocation(GeoLocation(-22.8125815,-47.0454361))
+      .withEvents(["Event01", "Event02"]),
+  Hub().withId(4)
+      .withPhotoUrl("https://media.licdn.com/dms/image/C4D22AQG-e-wLPG8dnQ/feedshare-shrink_8192/0?e=1561593600&v=beta&t=0U1OnROHLYqeubGFRP1d6DrTl1Ae93L_fl3LkGrOjqE")
+      .withName("Hub BH")
+      .withDescription("Sampa hub flutter!")
+      .withUsers(userMock)
+      .withGeoLocation(GeoLocation(-22.814692,-47.0448127))
+      .withEvents(["Event01", "Event02"]),
 ];
